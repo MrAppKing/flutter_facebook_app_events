@@ -1,4 +1,4 @@
-package id.oddbit.flutter.facebook_app_events_example
+package id.oddbit.flutter.facebook_app_events_lite_example
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

@@ -36,7 +36,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "id.oddbit.flutter.facebook_app_events_example"
+        applicationId "id.oddbit.flutter.facebook_app_events_lite_example"
         multiDexEnabled true
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion 34
@@ -61,7 +61,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    namespace 'id.oddbit.flutter.facebook_app_events_example'
+    namespace 'id.oddbit.flutter.facebook_app_events_lite_example'
     lint {
         disable 'InvalidPackage'
     }

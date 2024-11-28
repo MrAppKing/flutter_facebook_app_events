@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
-        android:label="facebook_app_events_example"
+        android:label="facebook_app_events_lite_example"
         android:icon="@mipmap/ic_launcher">
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" 

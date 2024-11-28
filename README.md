@@ -1,6 +1,6 @@
-# facebook_app_events
+# facebook_app_events_lite
 
-[![pub package](https://img.shields.io/pub/v/facebook_app_events.svg)](https://pub.dartlang.org/packages/facebook_app_events)
+[![pub package](https://img.shields.io/pub/v/facebook_app_events_lite.svg)](https://pub.dartlang.org/packages/facebook_app_events_lite)
 
 Flutter plugin for [Facebook App Events](https://developers.facebook.com/docs/app-events).
 
@@ -89,7 +89,7 @@ Please refer to the official SDK documentation for
 [iOS](https://developers.facebook.com/docs/reference/iossdk/current/FBSDKCoreKit/classes/fbsdkappevents.html)
 and
 [Android](https://developers.facebook.com/docs/reference/androidsdk/current/facebook/com/facebook/appevents/appeventslogger.html) respectively for the correct and expected behavior. Please
-[report an issue](https://github.com/oddbit/flutter_facebook_app_events/issues)
+[report an issue](https://github.com/oddbit/flutter_facebook_app_events_lite/issues)
 if you find anything that is not working according to official documentation.
 
 ## Dependencies on Facebook SDK
@@ -107,12 +107,12 @@ with your other plugins or dependencies.
 First of all, thank you for even considering to get involved. You are a real super :star:  and we :heart:  you!
 
 ### Reporting bugs and issues
-Use the configured [Github issue report template](https://github.com/oddbit/flutter_facebook_app_events/issues/new?assignees=&labels=&template=bug_report.md&title=) when reporting an issue. Make sure to state your observations and expectations
+Use the configured [Github issue report template](https://github.com/oddbit/flutter_facebook_app_events_lite/issues/new?assignees=&labels=&template=bug_report.md&title=) when reporting an issue. Make sure to state your observations and expectations
 as objectively and informative as possible so that we can understand your need and be able to troubleshoot.
 
 ### Discussions and ideas
 We're happy to discuss and talk about ideas in the
-[repository discussions](https://github.com/oddbit/flutter_facebook_app_events/discussions) and/or post your
+[repository discussions](https://github.com/oddbit/flutter_facebook_app_events_lite/discussions) and/or post your
 question to [StackOverflow](https://stackoverflow.com/search?q=facebook+app+events+flutter).
 
 Feel free to open a thread if you are having any questions on how to use either the Facebook App Events as a reporting tool

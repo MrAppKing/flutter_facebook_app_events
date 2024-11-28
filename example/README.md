@@ -1,6 +1,6 @@
-# facebook_app_events_example
+# facebook_app_events_lite_example
 
-Demonstrates how to use the `facebook_app_events` plugin. Read the offical ["getting started" documentation](https://developers.facebook.com/docs/app-events/getting-started-app-events-android#custom-events) for full understanding.
+Demonstrates how to use the `facebook_app_events_lite` plugin. Read the offical ["getting started" documentation](https://developers.facebook.com/docs/app-events/getting-started-app-events-android#custom-events) for full understanding.
 
 # Privacy Policy
 Please note that this example project is configured to run against a Facebook app

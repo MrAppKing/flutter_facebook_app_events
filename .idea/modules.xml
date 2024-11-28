@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/flutter_facebook_app_events.iml" filepath="$PROJECT_DIR$/.idea/flutter_facebook_app_events.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/flutter_facebook_app_events_lite.iml" filepath="$PROJECT_DIR$/.idea/flutter_facebook_app_events_lite.iml" />
     </modules>
   </component>
 </project>

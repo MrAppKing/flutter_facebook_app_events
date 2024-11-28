@@ -1,86 +1,126 @@
 import Flutter
+import Foundation
 import UIKit
 import FBSDKCoreKit
 import FBSDKCoreKit_Basics
 import FBAudienceNetwork
 
 public class SwiftFacebookAppEventsPlugin: NSObject, FlutterPlugin {
-    public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "flutter.oddbit.id/facebook_app_events", binaryMessenger: registrar.messenger())
-        let instance = SwiftFacebookAppEventsPlugin()
+    private static var isSDKInitialized = false
 
-        // Required for FB SDK 9.0, as it does not initialize the SDK automatically any more.
-        // See: https://developers.facebook.com/blog/post/2021/01/19/introducing-facebook-platform-sdk-version-9/
-        // "Removal of Auto Initialization of SDK" section
-        ApplicationDelegate.shared.initializeSDK()
+    public static func register(with registrar: FlutterPluginRegistrar) {
+        let channel = FlutterMethodChannel(name: "flutter.oddbit.id/facebook_app_events_lite", binaryMessenger: registrar.messenger())
+        let instance = SwiftFacebookAppEventsPlugin()
 
         registrar.addMethodCallDelegate(instance, channel: channel)
         registrar.addApplicationDelegate(instance)
     }
     
     /// Connect app delegate with SDK
-    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable : Any] = [:]) -> Bool {
-        var options = [UIApplication.LaunchOptionsKey: Any]()
-        for (k, value) in launchOptions {
-            let key = k as! UIApplication.LaunchOptionsKey
-            options[key] = value
-        }
-        ApplicationDelegate.shared.application(application,didFinishLaunchingWithOptions: options)
-        return true
+    public func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        return ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
-    public func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
-        let processed = ApplicationDelegate.shared.application(
-            app, open: url,
+
+    public func application(
+        _ application: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+        return ApplicationDelegate.shared.application(
+            application,
+            open: url,
             sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-            annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-        return processed;
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
-        case "clearUserData":
-            handleClearUserData(call, result: result)
-            break
-        case "setUserData":
-            handleSetUserData(call, result: result)
-            break
-        case "clearUserID":
-            handleClearUserID(call, result: result)
-            break
-        case "flush":
-            handleFlush(call, result: result)
-            break
-        case "getApplicationId":
-            handleGetApplicationId(call, result: result)
-            break
-        case "logEvent":
-            handleLogEvent(call, result: result)
-            break
-        case "logPushNotificationOpen":
-            handlePushNotificationOpen(call, result: result)
-            break
-        case "setUserID":
-            handleSetUserId(call, result: result)
-            break
-        case "setAutoLogAppEventsEnabled":
-            handleSetAutoLogAppEventsEnabled(call, result: result)
-            break
-        case "setDataProcessingOptions":
-            handleSetDataProcessingOptions(call, result: result)
-            break
-        case "logPurchase":
-            handlePurchased(call, result: result)
-            break
-        case "getAnonymousId":
-            handleHandleGetAnonymousId(call, result: result)
-            break
-        case "setAdvertiserTracking":
-            handleSetAdvertiserTracking(call, result: result)
-            break
-        default:
-            result(FlutterMethodNotImplemented)
+            case "initializeFacebookSDK":
+                guard let arguments = call.arguments as? [String: Any],
+                    let appID = arguments["appID"] as? String,
+                    let displayName = arguments["displayName"] as? String,
+                    let clientToken = arguments["clientToken"] as? String else {
+                    result(FlutterError(code: "INVALID_ARGUMENTS", message: "Invalid arguments for Facebook SDK initialization", details: nil))
+                    return
+                }
+
+                initializeFacebookSDK(appID: appID, displayName: displayName, clientToken: clientToken)
+                result(nil)
+                break
+            case "clearUserData":
+                handleClearUserData(call, result: result)
+                break
+            case "setUserData":
+                handleSetUserData(call, result: result)
+                break
+            case "clearUserID":
+                handleClearUserID(call, result: result)
+                break
+            case "flush":
+                handleFlush(call, result: result)
+                break
+            case "getApplicationId":
+                handleGetApplicationId(call, result: result)
+                break
+            case "logEvent":
+                handleLogEvent(call, result: result)
+                break
+            case "logPushNotificationOpen":
+                handlePushNotificationOpen(call, result: result)
+                break
+            case "setUserID":
+                handleSetUserId(call, result: result)
+                break
+            case "setAutoLogAppEventsEnabled":
+                handleSetAutoLogAppEventsEnabled(call, result: result)
+                break
+            case "setDataProcessingOptions":
+                handleSetDataProcessingOptions(call, result: result)
+                break
+            case "logPurchase":
+                handlePurchased(call, result: result)
+                break
+            case "getAnonymousId":
+                handleHandleGetAnonymousId(call, result: result)
+                break
+            case "setAdvertiserTracking":
+                handleSetAdvertiserTracking(call, result: result)
+                break
+            default:
+                result(FlutterMethodNotImplemented)
         }
+    }
+
+    /// Initialize Facebook SDK with dynamic values
+    private func initializeFacebookSDK(appID: String, displayName: String, clientToken: String) {
+        guard !SwiftFacebookAppEventsPlugin.isSDKInitialized else {
+            print("Facebook SDK is already initialized")
+            return
+        }
+
+        // Log to confirm initialization process
+        print("Initializing Facebook SDK with:")
+        print("AppID: \(appID)")
+        print("DisplayName: \(displayName)")
+        print("ClientToken: \(clientToken)")
+
+        // Set Facebook SDK configuration
+        Settings.shared.appID = appID
+        Settings.shared.displayName = displayName
+        Settings.shared.clientToken = clientToken
+
+        // Enable Advertiser ID collection and auto-logging of app events
+        Settings.shared.isAdvertiserIDCollectionEnabled = true
+        Settings.shared.isAutoLogAppEventsEnabled = true
+        Settings.shared.isAdvertiserTrackingEnabled = true
+
+        // Initialize the SDK
+        ApplicationDelegate.shared.initializeSDK()
+        SwiftFacebookAppEventsPlugin.isSDKInitialized = true
     }
 
     private func handleClearUserData(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

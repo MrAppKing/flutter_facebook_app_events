@@ -1,4 +1,4 @@
-group 'id.oddbit.flutter.facebook_app_events'
+group 'id.oddbit.flutter.facebook_app_events_lite'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -28,7 +28,7 @@ android {
 
     // Conditional for compatibility with AGP < 4.2
     if (project.android.hasProperty("namespace")) {
-        namespace "id.oddbit.flutter.facebook_app_events"
+        namespace "id.oddbit.flutter.facebook_app_events_lite"
     }
 
     compileSdkVersion 33
@@ -65,7 +65,7 @@ dependencies {
     // - Do **not** specify the `minor` or `patch` version.
     //
     // About the version syntax:
-    //  - https://github.com/oddbit/flutter_facebook_app_events/pull/189#discussion_r768267841
+    //  - https://github.com/oddbit/flutter_facebook_app_events_lite/pull/189#discussion_r768267841
     //  - https://docs.oracle.com/middleware/1212/core/MAVEN/maven_version.htm#MAVEN402
     implementation 'com.facebook.android:facebook-android-sdk:[17.0,18.0)'
 }

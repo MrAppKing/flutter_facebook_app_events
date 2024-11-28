@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:facebook_app_events/facebook_app_events.dart';
+import 'package:facebook_app_events_lite/facebook_app_events_lite.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

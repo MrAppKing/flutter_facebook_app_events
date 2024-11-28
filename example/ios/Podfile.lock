@@ -1,5 +1,5 @@
 PODS:
-  - facebook_app_events (0.0.1):
+  - facebook_app_events_lite (0.0.2):
     - FBAudienceNetwork (= 6.16)
     - FBSDKCoreKit (~> 17.0)
     - Flutter
@@ -13,7 +13,7 @@ PODS:
   - Flutter (1.0.0)
 
 DEPENDENCIES:
-  - facebook_app_events (from `.symlinks/plugins/facebook_app_events/ios`)
+  - facebook_app_events_lite (from `.symlinks/plugins/facebook_app_events_lite/ios`)
   - Flutter (from `Flutter`)
 
 SPEC REPOS:
@@ -24,13 +24,13 @@ SPEC REPOS:
     - FBSDKCoreKit_Basics
 
 EXTERNAL SOURCES:
-  facebook_app_events:
-    :path: ".symlinks/plugins/facebook_app_events/ios"
+  facebook_app_events_lite:
+    :path: ".symlinks/plugins/facebook_app_events_lite/ios"
   Flutter:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  facebook_app_events: d791f99d78f74cde976edd378678566cb7bb4ab0
+  facebook_app_events_lite: c8694fedaf5a82b3e44259d6756db13052b19cb9
   FBAEMKit: 31a20c2d8744d8c57d3a5b7ae4e27b4fdd819193
   FBAudienceNetwork: d1670939884e3a2e0ad98dca98d7e0c841417228
   FBSDKCoreKit: dac911b656816f8d0b06e5fa4bac60e89505bb3b
@@ -39,4 +39,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c4c93c5f6502fe2754f48404d3594bf779584011
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

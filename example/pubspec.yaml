@@ -1,5 +1,5 @@
-name: facebook_app_events_example
-description: Demonstrates how to use the facebook_app_events plugin.
+name: facebook_app_events_lite_example
+description: Demonstrates how to use the facebook_app_events_lite plugin.
 publish_to: 'none'
 version: 0.0.1+1
 environment:
@@ -14,7 +14,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  facebook_app_events:
+  facebook_app_events_lite:
     path: ../
 
 flutter:

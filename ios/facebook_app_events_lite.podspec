@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-  s.name             = 'facebook_app_events'
-  s.version          = '0.0.1'
+  s.name             = 'facebook_app_events_lite'
+  s.version          = '0.0.2'
   s.summary          = 'Flutter plugin for Facebook Analytics and App Events'
   s.description      = <<-DESC
 Flutter plugin for Facebook Analytics and App Events
                        DESC
-  s.homepage         = 'https://github.com/oddbit/flutter_facebook_app_events'
+  s.homepage         = 'https://github.com/oddbit/flutter_facebook_app_events_lite'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Oddbit Team' => 'opensource@oddbit.id' }
   s.source           = { :path => '.' }
@@ -17,7 +17,7 @@ Flutter plugin for Facebook Analytics and App Events
   s.ios.deployment_target = '12.0'
 
   # Do not specify PATCH version of FBSDKCoreKit. See README file for explanation
-  # https://github.com/oddbit/flutter_facebook_app_events#dependencies-on-facebook-sdk
+  # https://github.com/oddbit/flutter_facebook_app_events_lite#dependencies-on-facebook-sdk
   s.dependency 'FBSDKCoreKit', '~> 17.0'
   
   # See docs on FBAudienceNetwork

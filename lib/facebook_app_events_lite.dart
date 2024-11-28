@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
-const channelName = 'flutter.oddbit.id/facebook_app_events';
+const channelName = 'flutter.oddbit.id/facebook_app_events_lite';
 
 class FacebookAppEvents {
   static const _channel = MethodChannel(channelName);
@@ -44,6 +44,26 @@ class FacebookAppEvents {
   /// Parameter key used to specify an ID for the specific piece of content being logged about.
   /// This could be an EAN, article identifier, etc., depending on the nature of the app.
   static const paramNameContentId = "fb_content_id";
+
+  static Future<void> initializeFacebookSDK({
+    required String appID,
+    required String displayName,
+    required String clientToken,
+  }) async {
+    try {
+      await _channel.invokeMethod('initializeFacebookSDK', {
+        'appID': appID,
+        'displayName': displayName,
+        'clientToken': clientToken,
+      });
+    } on PlatformException catch (e) {
+      throw Exception("Failed to initialize Facebook SDK: ${e.message}");
+    }
+  }
+
+  Future<String?> getAppData() {
+    return _channel.invokeMethod<String>('getAppData');
+  }
 
   /// Clears the current user data
   Future<void> clearUserData() {

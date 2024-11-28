@@ -1,4 +1,4 @@
-package id.oddbit.flutter.facebook_app_events
+package id.oddbit.flutter.facebook_app_events_lite
 
 import androidx.annotation.NonNull
 
@@ -29,7 +29,7 @@ class FacebookAppEventsPlugin: FlutterPlugin, MethodCallHandler {
   private val logTag = "FacebookAppEvents"
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.oddbit.id/facebook_app_events")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter.oddbit.id/facebook_app_events_lite")
     channel.setMethodCallHandler(this)
     appEventsLogger = AppEventsLogger.newLogger(flutterPluginBinding.applicationContext)
     anonymousId = AppEventsLogger.getAnonymousAppDeviceGUID(flutterPluginBinding.applicationContext)
